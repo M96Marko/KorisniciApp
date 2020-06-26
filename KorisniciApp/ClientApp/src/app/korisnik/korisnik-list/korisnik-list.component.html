@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+  <button class="btn dodaj" (click)="createKorisnik()">Dodaj</button>
+  <button class="btn promijeni" (click)="editKorisnik()">Promijeni</button>
+  <button class="btn obrisi" (click)="deleteKorisnik()">Obriši</button>
+
+  <ag-grid-angular #agGrid style="width: 100%; height: 500px;"
+                   class="ag-theme-alpine"
+                   [rowData]="rowData | async"
+                   [columnDefs]="columnDefs"
+                   rowSelection="single">
+  </ag-grid-angular>
+</body>
+</html>

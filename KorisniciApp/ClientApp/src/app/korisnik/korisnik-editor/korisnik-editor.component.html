@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+</head>
+<body>
+  <form (ngSubmit)="saveKorisnik()" #korisnikForm="ngForm">
+    <div class="form-group">
+      <label for="id">Id</label>
+      <input type="text" class="form-control" id="id" [(ngModel)]="korisnikModel.id" name="id" required/>
+    </div>
+
+    <div class="form-group">
+      <label for="mjestoLookup">Spol</label>
+      <select class="form-control" id="spol" [(ngModel)]="korisnikModel.spol" name="spol" required>
+        <option *ngFor="let spol of spolovi" [value]="spol">{{spol}}</option>
+      </select>
+      <div *ngIf="!korisnikModel.spol" class="alert alert-danger">Spol je obavezan podatak</div>
+    </div>
+
+    <div class="form-group">
+      <label for="ime">Ime</label>
+      <input type="text" class="form-control" id="ime" [(ngModel)]="korisnikModel.ime" name="ime" required />
+      <div *ngIf="!korisnikModel.ime" class="alert alert-danger">Ime je obavezan podatak</div>
+      <div *ngIf="korisnikModel.ime.invalid" class="alert alert-danger">Ispravite imer</div>
+    </div>
+
+    <div class="form-group">
+      <label for="prezime">Prezime</label>
+      <input type="text" class="form-control" id="prezime" [(ngModel)]="korisnikModel.prezime" name="prezime" required />
+      <div *ngIf="!korisnikModel.prezime" class="alert alert-danger">Prezime je obavezan podatak </div>
+      <div *ngIf="korisnikModel.prezime.invalid" class="alert alert-danger">Ispravite prezime</div>
+    </div>
+
+    <div class="form-group">
+      <label for="adresa">Adresa</label>
+      <input type="text" class="form-control" id="adresa" [(ngModel)]="korisnikModel.adresa" name="adresa" required />
+      <div *ngIf="!korisnikModel.adresa" class="alert alert-danger"> Adresa je obavezan podatak</div>
+      <div *ngIf="korisnikModel.adresa.invalid" class="alert alert-danger">Neispravana adresa</div>
+    </div>
+
+    <div class="form-group">
+      <label for="brojMobitela">Broj mobitela</label>
+      <input type="text" class="form-control" id="brojMobitela" [(ngModel)]="korisnikModel.brojMobitela" maxlength="20" name="brojMobitela" required />
+      <div *ngIf="!korisnikModel.brojMobitela" class="alert alert-danger">Broj mobitela je obavezan podatak</div>
+      <div *ngIf="korisnikModel.brojMobitela.invalid" class="alert alert-danger">Neispravan broj mobitela</div>
+    </div>
+
+    <div class="form-group">
+      <label for="mjestoLookup">Mjesto</label>
+      <select class="form-control" id="mjestoId" [(ngModel)]="korisnikModel.mjestoId" name="mjestoId" required>
+        <option *ngFor="let mjesto of mjesta" [ngValue]="{id: mjesto.id, name: mjesto.naziv}">{{mjesto.naziv}}</option>
+      </select>
+      <div *ngIf="!korisnikModel.mjestoId" class="alert alert-danger">Mjesto je obavezan podatak</div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="korisnikModel.email" name="email" required />
+      <div *ngIf="!korisnikModel.email" class="alert alert-danger">Email je obavezan podatak</div>
+      <div *ngIf="korisnikModel.email.invalid" class="alert alert-danger">Nesispravan email</div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Spremi</button>
+
+  </form>
+
+</body>
+</html>
